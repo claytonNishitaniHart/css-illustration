@@ -1,0 +1,43 @@
+//Color Maps
+$PrimaryColors: (
+        //sub-heading at the top of the app UI
+        "Pale Violet": hsl(276, 100%, 81%),
+        //chat on the left
+        "Moderate Violet": hsl(276, 55%, 52%),
+        //chat on the right
+        "Desaturated Dark Violet": hsl(271, 15%, 43%),
+        //placeholder text
+        "Grayish Blue": hsl(206, 6%, 79%),
+        //main heading
+        "Very Dark Desaturated Violet": hsl(271, 36%, 24%),
+        //paragraph
+        "Dark Grayish Violet": hsl(270, 7%, 64%)
+);
+
+$GradientColors: (
+        //lighter
+        "Light Magenta": hsl(293, 100%, 63%),
+        //darker
+        "Light Violet": hsl(264, 100%, 61%)
+);
+
+$SecondaryColors: (
+        "White": hsl(0, 0%, 100%),
+        //app background
+        "Light Grayish Violet": hsl(270, 20%, 96%),
+        //submit button background
+        "Very Dark Desaturated Violet": hsl(271, 36%, 24%),
+        //radio button outline
+        "Very Light Magenta": hsl(289, 100%, 72%)
+);
+
+body {
+  background-color: map_get($SecondaryColors, "Light Grayish Violet");
+}
+
+.App {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-items: center;
+}
