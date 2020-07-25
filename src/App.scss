@@ -1,3 +1,15 @@
+@mixin breakpoint($point) {
+  @if ($point == "phone") {
+    @media (max-width: 600px) { @content; }
+  }
+  @else if ($point == "tablet") {
+    @media (min-width: 600px) { @content; }
+  }
+  @else if ($point == "desktop") {
+    @media (min-width: 1250px) { @content; }
+  }
+}
+
 //Color Maps
 $PrimaryColors: (
         //sub-heading at the top of the app UI
@@ -37,7 +49,91 @@ body {
 
 .App {
   display: grid;
-  width: 100vw;
-  height: 100vh;
-  place-items: center;
+  @include breakpoint(tablet) {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  @include breakpoint(phone) {
+    padding-top: 15vw;
+    place-items: center;
+  }
+  overflow: hidden;
 }
+
+#bg-container {
+  position: relative;
+}
+
+#bg-element1 {
+  position: absolute;
+  @include breakpoint(phone) {
+    top: -750px;
+    left: -400px;
+  }
+  @include breakpoint(tablet) {
+    top: -175px;
+    left: -50px;
+    height: 800px;
+  }
+  width: 400px;
+  height: 1200px;
+  border-radius: 0 0 200px 200px;
+  background: linear-gradient(to top, map_get($GradientColors, "Light Violet"), map_get($GradientColors, "Light Magenta"));
+  z-index: -1;
+}
+
+#bg-element2 {
+  position: absolute;
+  @include breakpoint(phone) {
+    top: 375px;
+    left: 1px;
+    height: 1200px;
+  }
+  @include breakpoint(tablet) {
+    top: 125px;
+    right: -150px;
+    height: 800px;
+  }
+  width: 400px;
+  border-radius: 200px 200px 0 0;
+  background: linear-gradient(to top, map_get($GradientColors, "Light Violet"), map_get($GradientColors, "Light Magenta"));
+  z-index: -1;
+  opacity: 0.05;
+}
+
+#phone-image {
+  @include breakpoint(tablet) {
+    position: absolute;
+    top: 12vh;
+    left: 20vw;
+  }
+}
+
+h1 {
+  @include breakpoint(tablet) {
+    position: absolute;
+    top: 35vh;
+    left: 45vw;
+  }
+  font-size: 2.5em;
+  color: map_get($PrimaryColors, "Very Dark Desaturated Violet");
+}
+
+p {
+  @include breakpoint(tablet) {
+    position: absolute;
+    top: 47.5vh;
+    left: 45vw;
+    text-align: left;
+    width: 450px;
+  }
+  text-align: center;
+  margin: 0;
+  @include breakpoint(phone) {
+    padding: 0 30px 75px 30px;
+  }
+  color: map_get($PrimaryColors, "Dark Grayish Violet");
+  line-height: 1.5;
+}
+
